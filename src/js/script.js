@@ -2,27 +2,23 @@ const asteroidContainer = document.getElementById('asteroids');
 const hazardousCheckbox = document.getElementById('hazardous');
 
 async function fetchAsteroids() {
-    displayLoading();
+    asteroidContainer.innerHTML = '<p class="loading">Carregando...</p>';
+
     try {
         const response = await fetch('https://api.nasa.gov/neo/rest/v1/neo/browse?api_key=HOglfPRfQAeaqN8RDrabkMn49w2wehuU1dvh8aoo');
-        if (!response.ok) {
-            throw new Error('Erro ao buscar dados');
-        }
-        const data = await response.json();
-        displayAsteroids(data.near_earth_objects);
+        if (!response.ok) throw new Error('Erro ao buscar dados');
+        
+        const { near_earth_objects } = await response.json();
+        displayAsteroids(near_earth_objects);
     } catch (error) {
         asteroidContainer.innerHTML = `<p>Erro: ${error.message}</p>`;
     }
 }
 
-function displayLoading() {
-    asteroidContainer.innerHTML = '<p class="loading">Carregando...</p>';
-}
-
 function displayAsteroids(asteroids) {
     asteroidContainer.innerHTML = '';
-    const filteredAsteroids = hazardousCheckbox.checked 
-        ? asteroids.filter(a => a.is_potentially_hazardous_asteroid) 
+    const filteredAsteroids = hazardousCheckbox.checked
+        ? asteroids.filter(a => a.is_potentially_hazardous_asteroid)
         : asteroids;
 
     filteredAsteroids.forEach(asteroid => {

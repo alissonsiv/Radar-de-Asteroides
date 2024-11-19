@@ -13,9 +13,8 @@ body {
     align-items: center;
 }
 
-header {
+header, footer {
     text-align: center;
-    margin-bottom: 30px;
 }
 
 h1 {
@@ -24,17 +23,13 @@ h1 {
 }
 
 main {
-    text-align: center;
     width: 100%;
     max-width: 800px;
+    text-align: center;
 }
 
 #filter {
     margin: 20px 0;
-}
-
-#data {
-    margin-bottom: 20px;
 }
 
 #asteroids {
@@ -57,7 +52,6 @@ main {
 }
 
 .loading {
-    text-align: center;
     color: #ffcc00;
     font-size: 1.5em;
 }
@@ -78,6 +72,5 @@ button:hover {
 }
 
 footer {
-    text-align: center;
     margin-top: 20px;
 }
