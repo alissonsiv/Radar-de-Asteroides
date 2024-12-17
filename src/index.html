@@ -11,12 +11,21 @@
         <h1>Monitoramento Astronômico</h1>
     </header>
     <main>
-        <section id="filter">
-            <label for="hazardous">Mostrar apenas perigosos:</label>
-            <input type="checkbox" id="hazardous">
+        <section id="controls">
+            <div id="filter">
+                <label for="hazardous">Mostrar apenas perigosos:</label>
+                <input type="checkbox" id="hazardous">
+            </div>
+            <div id="search">
+                <label for="date">Filtrar por data:</label>
+                <input type="date" id="date">
+                <label for="searchName">Buscar por nome:</label>
+                <input type="text" id="searchName" placeholder="Digite o nome do asteroide">
+            </div>
         </section>
         <section id="data">
             <h2>Asteroides Próximos da Terra</h2>
+            <p id="asteroidCount"></p>
             <div id="asteroids"></div>
         </section>
         <button id="refresh">Atualizar Dados</button>
